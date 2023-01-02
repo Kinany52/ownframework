@@ -1,6 +1,6 @@
 <?php
 
-namespace src\Controller\Admin;
+namespace App\Controller\Admin;
 
 class Users
 {

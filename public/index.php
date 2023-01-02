@@ -1,8 +1,10 @@
 <?php
 
+require '../vendor/autoload.php';
 //require '../src/Controller/Posts.php';
 //require '../Core/Router.php';
 
+/*
 spl_autoload_register(function ($class) {
     $root = dirname(__DIR__); //get the parent directory
     $file = $root . '/' . str_replace('\\', '/', $class) . '.php';
@@ -10,6 +12,7 @@ spl_autoload_register(function ($class) {
         require $root . '/' . str_replace('\\', '/', $class) . '.php';
     }
 });
+*/
 
 $router = new Core\Router();
 
