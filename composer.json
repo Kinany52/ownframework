@@ -1,0 +1,16 @@
+{
+    "name": "mymvc/ownframework",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/",
+            "Core\\": "Core/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sarmad Al Kinany",
+            "email": "draskinany@gmail.com"
+        }
+    ],
+    "require": {}
+}
