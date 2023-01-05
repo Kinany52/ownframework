@@ -2,14 +2,15 @@
 
 namespace App\Repository;
 
-use PDO;
+use App\Entity\PostsEntity;
 use Core\DB;
+use Generator;
 
 class PostsRepository
 {
-    public static function getTitledComment()
+    public static function getTitledContent()
     {
-        $stmt = DB::instance()->prepare("SELECT id, title, content FROM posts ORDER BY created_at");
+        $stmt = DB::instance()->prepare("SELECT title, content FROM posts ORDER BY created_at");
         $stmt->execute([]);
         $result = $stmt->fetchAll();
 
@@ -20,8 +21,16 @@ class PostsRepository
     {
         $stmt = DB::instance()->prepare("SELECT content FROM posts WHERE id=? ORDER BY created_at");
         $stmt->execute([$id]);
-        $result = $stmt->fetchAll();
+        $result = $stmt->fetchColumn();
 
         return $result;
+    }
+
+    public static function accessArray(int $id): Generator
+    {
+        $stmt = DB::instance()->prepare("SELECT * FROM posts WHERE id=?");
+        $stmt->execute([$id]);
+        while ($singleVal = $stmt->fetch())
+		yield new PostsEntity(...$singleVal);
     }
 }

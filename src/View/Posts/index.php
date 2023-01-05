@@ -5,6 +5,6 @@
     <title>Posts</title>
 </head>
 <body>
-    <h1></h1>
+    <h1><?php print_r($posts); ?></h1>
 </body>
 </html>

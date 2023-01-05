@@ -9,21 +9,47 @@ class Posts
 {
     public function index(): void
     {
-       $posts = PostsRepository::getTitledComment();
-       var_dump($posts);
+       $posts = PostsRepository::getTitledContent();
+        //echo '<pre>';
+        //echo htmlspecialchars(print_r($posts, true));
+        //echo '</pre>';
+       
        View::render('Posts/index.php', [
-        //'posts' => $posts
+        'posts' => $posts
        ]);
     }
 
-    public function addNew(): void
+    public function getSingleAccess(): void
     {
-        echo 'Hello from addNew action of the Posts controller!';
+        $postId = 3;
+        foreach (PostsRepository::accessArray($postId) as $arrayValue) {
+            $singleContent = $arrayValue->content;
+        }
+        //echo $singleContent;
+
+        foreach (PostsRepository::accessArray($postId) as $arrayValue) {
+            $singleTitle = $arrayValue->title;
+        }
+        //echo $singleTitle;
+
+        View::render('Posts/getSingleAccess.php', [
+            'singleContent' => $singleContent,
+            'singleTitle' => $singleTitle,
+           ]);
     }
 
     public function getCont(): void
     {
-        $testVar = PostsRepository::getSecondContent(2);
-        var_dump($testVar);
+        $postId = 2;
+        $testVar = PostsRepository::getSecondContent($postId);
+        //echo $testVar;
+        //echo '<pre>';
+        //var_dump($router->getRoutes());
+        //echo htmlspecialchars(print_r($testVar, true));
+        //echo '</pre>';
+
+        View::render('Posts/getCont.php', [
+            'testVar' => $testVar
+           ]);
     }
 }
