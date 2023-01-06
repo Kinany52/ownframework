@@ -19,6 +19,31 @@ class Posts
        ]);
     }
 
+    public function getCont(): void
+    {
+        $postId = 2;
+        $testVar = PostsRepository::getSecondContent($postId);
+        //echo $testVar;
+        //echo '<pre>';
+        //var_dump($router->getRoutes());
+        //echo htmlspecialchars(print_r($testVar, true));
+        //echo '</pre>';
+
+        View::render('Posts/getCont.php', [
+            'testVar' => $testVar
+           ]);
+    }
+
+    public function getRowCont(): void
+    {
+        $postId = 2;
+        $rowCount = PostsRepository::getRowContent($postId);
+
+        View::render('Posts/getRowCont.php', [
+            'rowCount' => $rowCount
+           ]);
+    }
+
     public function getSingleAccess(): void
     {
         $postId = 3;
@@ -35,21 +60,6 @@ class Posts
         View::render('Posts/getSingleAccess.php', [
             'singleContent' => $singleContent,
             'singleTitle' => $singleTitle,
-           ]);
-    }
-
-    public function getCont(): void
-    {
-        $postId = 2;
-        $testVar = PostsRepository::getSecondContent($postId);
-        //echo $testVar;
-        //echo '<pre>';
-        //var_dump($router->getRoutes());
-        //echo htmlspecialchars(print_r($testVar, true));
-        //echo '</pre>';
-
-        View::render('Posts/getCont.php', [
-            'testVar' => $testVar
            ]);
     }
 }
