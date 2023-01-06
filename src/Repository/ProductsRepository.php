@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\ProductsEntity;
 use Core\DB;
+use Generator;
 
 class ProductsRepository
 {
@@ -21,7 +22,7 @@ class ProductsRepository
         $stmt->execute($productsEntity->toArray());
     }
 
-    public static function getProduct(int $id)
+    public static function getProduct(int $id): Generator
     {
         $stmt = DB::instance()->prepare("SELECT * FROM products WHERE id=?");
         $stmt->execute([$id]);
